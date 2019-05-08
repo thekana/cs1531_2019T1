@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+.custom-restricted-width {
+    /* To limit the menu width to the content of the menu: */
+    display: inline-block;
+}
+</style>
+
+
+<!-- Tabs -->
+<div class="pure-u-1-8 pure-menu custom-restricted-width" style="background-color: #eaf5ff">
+    
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+        <a href="{{ url_for('review_order') }}" class="pure-menu-link">
+            <i class="fas fa-shopping-cart"></i>
+            My Order
+        </a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="{{ url_for('display_menu', menu_name='Mains') }}" class="pure-menu-link"><i class="fas fa-hamburger"></i> Mains</a>
+        </li>
+        <li class="pure-menu-item">
+                <a href="{{ url_for('display_menu', menu_name='Sides') }}" class="pure-menu-link"><i class="fas fa-pizza-slice"></i> Sides</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="{{ url_for('display_menu', menu_name='Drinks') }}" class="pure-menu-link"><i class="fas fa-cocktail"></i> Drinks</a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="{{ url_for('display_menu', menu_name='Sundaes') }}" class="pure-menu-link"><i class="fas fa-ice-cream"></i> Sundaes</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Main Content -->
+{% block menus_block %}{% endblock %}
+{% endblock %}

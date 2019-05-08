@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- Customized CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Order System</title>
+    <style>
+        .aligned_ul { 
+            display:table; 
+            margin:0 auto;
+        }
+        .main_content {
+            padding: 2em;
+        }
+        
+        /* --- Tooltip --- */
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+        }
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: auto;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 5px;
+            border-radius: 6px;
+ 
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+            top: -5px;
+            left: 105%;
+        }
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+        /* --- list --- */
+
+        .menu {
+            padding: 20px;
+        }
+
+        .menu-item {
+            width: auto;
+            background: #e7eaf6;
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        /* The alert message box */
+        .alert {
+            padding: 15px;
+            background-color: #f44336; /* Red */
+            color: white;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body style="background-color: #f3f8ff">
+<div class="pure-g">
+
+<!-- Nav Menu -->
+<div class="pure-u-1 pure-menu pure-menu-horizontal" style="background-color: #a9c6de">
+    <a href="{{ url_for('home_page') }}" class="pure-menu-heading pure-menu-link"><i class="fas fa-home"></i> Home</a>
+</div>
+
+{% block body %}
+    <!-- Main Content -->
+{% endblock %}
+
+</div>
+
+</body>
+</html>

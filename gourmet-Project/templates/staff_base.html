@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+<!-- Tab Menu -->
+<div class="pure-u-1-8 pure-menu">
+    <a href="{{ url_for('staff_logout') }}" class="pure-menu-heading pure-menu-link">
+        <i class="fas fa-sign-out-alt"></i>
+        Log Out
+    </a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item">
+            <a href="{{ url_for('staff_order') }}" class="pure-menu-link">
+                <i class="fas fa-clipboard-list"></i> 
+                Order
+            </a>
+        </li>
+        <li class="pure-menu-item">
+            <a href="{{ url_for('staff_inventory') }}" class="pure-menu-link">
+                <i class="fas fa-dolly-flatbed"></i> 
+                Inventory
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- Main Content -->
+{% block staff_block %}{% endblock %}
+
+{% endblock %}

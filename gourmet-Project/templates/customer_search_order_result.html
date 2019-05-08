@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block body %}
+<div  class="pure-u-1 main_content">
+{% if order %}
+    <div align = "center"> {{ order }} </div>
+    <br>
+    <div>
+    <ul class="aligned_ul">
+    {% for item_list in order.items.values() %}
+        {% for item in item_list %}
+        <li> 
+            {% if item.type == "Mains" %} 
+                <b>{{ item.name }}</b>       <br>
+                Price: ${{'%.2f'| format(item.price) }}    <br>
+                {% for ingredient_type in item.ingredientsDict.keys() %}
+                    {% for ingredient in item.ingredientsDict[ingredient_type].values() %}
+                        {% if ingredient.amount|int != 0 %}
+                        - {{ingredient.name}}: {{ingredient.amount}} <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% else %}
+                <b>{{ item.name }}</b>       <br>
+                Price: ${{ item.price }}
+            {% endif %}
+        </li> 
+        {% endfor %}
+    {% endfor %}
+    </ul>
+    </div>
+
+    <p align = "center"> <b>Order Payment</b>: 
+        {% if order.is_payed %} <i class="fas fa-check"></i> {% else %} <i class="fas fa-times"></i> {% endif %} 
+    </p>
+    <p align = "center"> <b>Order Preparation</b>: {% if order.is_prepared %} 
+        <i class="fas fa-check-double"></i> {% else %} <i class="fas fa-times"></i> {% endif %} 
+    </p>
+{% else %}
+    Sorry, we cannot find your order.
+{% endif %}
+</div>
+
+{% endblock %}

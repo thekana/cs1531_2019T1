@@ -1,0 +1,51 @@
+{% extends 'customer_menu_base.html' %}
+{% block menus_block %}
+
+<div class="pure-u-3-4 main_content">
+<h3 align = "center">{{ item.name }} Creation</h3>
+<p>Select from these delicious ingredients what you want in your {{ item.name }} by typing in the number you want: </p>
+<!-- alert -->
+{% if error %}
+<div class="alert pure-u-3-4">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    Modification Not Successful. Please Modify Again!
+</div>
+{% endif %}
+
+<form method="POST" class="pure-form pure-form-aligned">
+{% for ingredient_type in item.ingredientsDict.keys() %}
+    <h4>{{ ingredient_type }}:</h4>
+    <!-- limit notice -->
+    {% if item.getLimit(ingredient_type) %}
+        <p>Max limit: {{ item.getLimit(ingredient_type) }}</p>
+    {% endif %}
+    <!-- error notice -->
+    {% if error[ingredient_type] %}
+        <p><font size="3" color="red">{{error[ingredient_type]}}</font></p>
+    {% endif %}
+    <ul>
+    {% for ingredient in item.ingredientsDict[ingredient_type].values() %}
+    <div class="pure-control-group">
+        <li> 
+            {% if ingredient.name not in inventory.display_unavailable_ingredients() %}
+                <label for="{{ ingredient.name }}" style='width: 20em; text-align: left'>{{ ingredient.name }}</label>
+                <input id="{{ ingredient.name }}" type="number" name="{{ ingredient.name }}" style="width: 4em" min="0" value="{{ingredient.amount if ingredient.amount}}" >
+                {% if error[ingredient.name] %} 
+                    <p><font size="3" color="red">{{error[ingredient.name]}}</font></p>
+                {% endif %}
+            {% else %}
+                <!-- notice for unavailable ingredients -->
+                <p>Sorry, currently {{ ingredient.name }} is unavailable.</p>
+            {% endif %}
+        </li> 
+    </div>
+    {% endfor %}
+    </ul>
+{% endfor %}
+    <div align = "center" class="pure-u-1-4">
+        <button style="display: inline-block" name='button' type='submit' value ='submit' class="pure-button">Submit</button>
+        <button style="display: inline-block" name='button' type='reset' class="pure-button">Cancel</button>
+    </div>
+</form>
+</div>
+{% endblock %}

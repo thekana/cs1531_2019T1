@@ -1,0 +1,17 @@
+Ingredient Name,Stock Amount,Stock Unit,Additional Price,Min Selling,Multiplier
+Fries,300,g,,75,1
+Nugget,25,g,,3,1
+Coke,1500,ml,,375,1
+OrangeJuice,1000,ml,,250,1
+Ice,1000,g,,20,1
+Sesame Bun,100,piece,1,1,1
+Muffin Bun,100,piece,1,1,1
+Wrap,100,piece,1,1,1
+Beef Patty,100,piece,2,1,1
+Vegetarian Patty,100,piece,2,1,1
+Chicken Patty,100,piece,2,1,1
+Tomato,100,slice,0.2,1,1
+Lettuce,200,gram,0.2,1,30
+Cheddar Cheese,100,slice,0.5,1,1
+Swiss Cheese,100,slice,0.5,1,1
+Tomato Sauce,100,package,0.1,1,1

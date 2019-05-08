@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="pure-u-1 main_content">
+    <p align="center">Finished!</p>
+    <p align="center">Your order ID is <b>{{ order_id }}</b>.</p>
+    <p align="center">You can track the process of your order in the <a href="{{ url_for('home_page') }}">home page</a></p>
+</div>
+
+{% endblock %}
+

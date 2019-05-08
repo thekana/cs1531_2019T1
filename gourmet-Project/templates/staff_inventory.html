@@ -1,0 +1,25 @@
+{% extends 'staff_base.html' %}
+{% block staff_block %}
+<div class="pure-u-7-8 pure-menu">
+<h3>Real-time Inventory:</h3>
+<form method="POST" class="pure-form pure-form-aligned">
+    <fieldset>
+        <ul>
+        {% for ingredient in system.inventory.get_ingredients() %}
+        <div class="pure-control-group">
+            <li> 
+            <label for="{{ ingredient.name }}" style='width: 20em; text-align: left'>{{ ingredient }}</label>
+            <input id="{{ ingredient.name }}" type="number" name="{{ ingredient.name }}" style="width: 5em" min="1" >
+            </li> 
+        </div>
+        {% endfor %}
+        </ul>
+    </fieldset>
+
+    <input type="submit" value="Update" class="pure-button"> 
+    <input type="reset" value="Clear" class="pure-button">
+    
+</form>
+</div>
+
+{% endblock %}

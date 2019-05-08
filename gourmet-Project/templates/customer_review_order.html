@@ -1,0 +1,49 @@
+{% extends 'customer_menu_base.html' %}
+{% block menus_block %}
+<div class="pure-u-3-4 main_content">
+<h1> Order Review:</h1>
+<div> {{ order }} </div>
+<form method="POST">
+{% if order %}
+<ul class="menu pure-u-1-2">
+    {% for item_list in order.items.values() %}
+    {% for item in item_list %}
+    <li class="menu-item">
+        <div class="pure-u-3-4">
+        {% if item.type == "Mains" %} 
+            <b>{{ item.name }}</b>       <br>
+            Price: ${{'%.2f'| format(item.price) }}    <br>
+            {% for ingredient_type in item.ingredientsDict.keys() %}
+            {% for ingredient in item.ingredientsDict[ingredient_type].values() %}
+            {% if ingredient.amount|int != 0 %}
+            - {{ingredient.name}}: {{ingredient.amount}} <br>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+            Description: {{ item.description }} 
+        {% else %}
+            <b>{{ item.name }}</b>       <br>
+            Price: ${{ item.price }}    <br>
+            Description: {{ item.description }} 
+        {% endif %}
+        </div>
+        <div class="pure-u-1-8">
+            <button name='button' type='submit' value="{{ item.uniqueid }}" class="pure-button tooltip">
+                <i class="fas fa-minus-circle"></i>
+                <span class="tooltiptext">delete this {{ item.name }} in your order</span>
+            </button> 
+        </div> 
+    </li> 
+    {% endfor %}
+    {% endfor %}
+    </ul>
+{% endif %}
+<div>
+    <button name='button' type='submit' value="checkout" class="pure-button"> 
+        <i class="fas fa-money-bill"></i>
+        Checkout
+    </button>
+</div>
+</form>
+{% endblock %}
+

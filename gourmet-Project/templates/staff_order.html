@@ -1,0 +1,48 @@
+{% extends 'staff_base.html' %}
+{% block staff_block %}
+<div class="pure-u-1-2">
+<h3>Current Orders:</h3>
+<form method="POST">
+    <ul>
+    {% for order in system.pending_orders %}
+        {% if order.is_payed %}
+            <div class="pure-u-1-4">
+            <li> {{ order }} <br>
+            {% for item_list in order.items.values() %}
+                {% for item in item_list %}
+                {% if item.type == "Mains" %} 
+                    {{ item.name }} <br>
+                    {% for ingredient_type in item.ingredientsDict.keys() %}
+                        {% for ingredient in item.ingredientsDict[ingredient_type].values() %}
+                            {% if ingredient.amount|int != 0 %}
+                            - {{ingredient.name}}: {{ingredient.amount}} <br>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    - {{ item.name }} <br>
+                {% endif %}
+                {% endfor %} 
+            {% endfor %}
+            </div>
+            <div class="pure-u-1-8">
+            <button name='button' type='submit' value={{ order.order_id }} class="pure-button">
+                <i class="far fa-check-square"></i> 
+            </button> 
+            </div>
+        </li> 
+        {% endif %}
+    {% endfor %}
+    </ul>
+</form>
+</div>
+
+<div class="pure-u-1-4">
+<h3>Completed Orders:</h3>
+    <ul>
+        {% for order in system.completed_orders %}
+            <li>  {{ order }} </li> 
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

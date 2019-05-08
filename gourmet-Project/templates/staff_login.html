@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<br/>
+
+<div align="center" class="pure-u-1">
+    <form method="POST" class="pure-form pure-form-stacked">
+        <fieldset>
+            <label for="username">Username:</label>
+            <input id="username" name="username" value="{{username if username}}" placeholder="username"> <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" value="">
+            {% if error %} 
+            <span class="pure-form-message">
+                <font size="3" color="red" float: left>Invalid username or password!</font> <br>
+            </span>
+            {% endif %}
+        <button name="button" value="login" type="submit" class="pure-button pure-button-primary">Login</button> 
+        <button name="button" value="cancel" type="submit" class="pure-button pure-button">Cancel</button> 
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}

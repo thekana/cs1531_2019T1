@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="pure-u-1">
+<h1 align="center">Online Order System</h1>
+<!-- Staff -->
+<h3 style=" position: absolute;top: 60px;right: 16px;font-size: 18px;">Are you staff member , click here</h3>
+</div>
+
+<!-- Customer -->
+<div class="pure-u-1">
+	<style scoped>
+		.button-success,
+		.button-error,
+		.button-warning,
+		.button-secondary {
+			color: white;
+			border-radius: 4px;
+			text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+		}
+		.button-success {
+			background: rgb(28, 184, 65); /* this is a green */
+		}
+		.button-error {
+			background: rgb(202, 60, 60); /* this is a maroon */
+		}
+		.button-warning {
+			background: rgb(223, 117, 20); /* this is an orange */
+		}
+		.button-secondary {
+			background: rgb(66, 184, 221); /* this is a light blue */
+		}
+		.button-xsmall {
+            font-size: 70%;
+        }
+        .button-small {
+            font-size: 85%;
+        }
+        .button-large {
+            font-size: 110%;
+        }
+        .button-xlarge {
+            font-size: 125%;
+        }
+	</style>
+<form method="POST">
+	<div align="center"> 
+		<button name='button' type='submit' value='make_new_order' class="button-xlarge button-success pure-button">
+			Make a new Order!
+		</button> 
+	</div>
+	<br>
+	{% if 'order_ID' in session.keys() and system.get_order(session['order_ID']) %}
+	<div align="center"> 
+		<button name='button' type='submit' value='continue_order' class="button-xlarge button-warning pure-button">
+			Continue your Order
+		</button> 
+	</div>
+	{% endif %}
+	<br> <br> <br>
+	<div align="center"> 
+		<input name='order_id' placeholder="your order ID"/> 
+		<br> <br>
+		<button name='button' type='submit' value='search_order' class="button-xlarge button-xsmall button-secondary pure-button">
+			Search your Order
+		</button> 
+	</div>
+	<div style=" position: absolute;top: 100px;right: 16px;font-size: 18px;"> 
+		<button name='button' type='submit' value='staff' class="pure-button">
+			<i class="fab fa-black-tie"></i>
+			For Staff
+		</button> 	
+	</div>
+	
+	
+</form>
+</div>
+{% endblock %}
